@@ -15,28 +15,53 @@ A lightweight, secure, and TypeScript-first library for generating realistic fak
 ## 📦 Installation
 
 ```bash
-npm install genata
+npm install @drichdev/genata
 # or
-yarn add genata
+yarn add @drichdev/genata
 # or
-pnpm add genata
+pnpm add @drichdev/genata
 ```
 
 ## 🎯 Quick Start
 
-### Basic Usage
+### CommonJS (Node.js)
 
 ```javascript
-import genata from "genata";
+const genata = require('@drichdev/genata');
 
-// Generate single values
 const email = genata.email();
 const firstName = genata.firstName();
 const phone = genata.phone();
+```
 
-// Generate with options
-const password = genata.password({ length: 20 });
-const randomInt = genata.datatype.integer({ min: 1, max: 100 });
+### ES Modules (Node.js with "type": "module")
+
+```javascript
+import genata from '@drichdev/genata';
+
+const email = genata.email();
+const firstName = genata.firstName();
+const phone = genata.phone();
+```
+
+### TypeScript / Next.js
+
+```typescript
+import genata from '@drichdev/genata';
+
+export default function Home() {
+  const email = genata.email();
+  const firstName = genata.firstName();
+  const phone = genata.phone();
+
+  return (
+    <div>
+      <p>Email: {email}</p>
+      <p>Name: {firstName}</p>
+      <p>Phone: {phone}</p>
+    </div>
+  );
+}
 ```
 
 ### Using Generators by Category
@@ -146,8 +171,8 @@ Location: address, city, country, zip
 Internet: url, ipv4, ipv6, credit_card
 Company: company, job_title
 Date: date, datetime
-Data Types: uuid, boolean, int, float, number, zero_one, id_increment, color
-Text: sentence, paragraph
+Data Types: uuid, boolean, int, float, number, zero_one, id_increment, color, hex
+Text: sentence, paragraph, word, slug
 ```
 
 ## 🎛️ API Reference
@@ -299,6 +324,42 @@ For very large batches (>100K records), consider:
 - Using `generateBatchWithProgress` to show progress
 - Running in a worker thread if in browser
 
+## 📚 Complete Documentation
+
+For detailed examples and advanced usage, see [USAGE.md](./USAGE.md)
+
+## 🔧 Import Methods
+
+### CommonJS
+```javascript
+const genata = require('@drichdev/genata');
+genata.email();
+```
+
+### ES Modules
+```javascript
+import genata from '@drichdev/genata';
+genata.email();
+```
+
+### TypeScript
+```typescript
+import genata, { type FieldDefinition } from '@drichdev/genata';
+```
+
+### Next.js / React
+```typescript
+import genata from '@drichdev/genata';
+
+export default function Component() {
+  const data = genata.email();
+  return <div>{data}</div>;
+}
+```
+
+**⚠️ Note**: If you get a "Module type is not specified" warning, add `"type": "module"` to your `package.json` or use CommonJS require instead.
+
 ---
 
 Made with ❤️ by Drichdev
+

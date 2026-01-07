@@ -73,17 +73,4 @@ const genata = {
   },
 };
 
-export default genata;
-export * from "./types";
-export * from "./validators";
-export {
-  PersonGenerators,
-  LocationGenerators,
-  InternetGenerators,
-  CompanyGenerators,
-  DateGenerators,
-  DataTypeGenerators,
-  TextGenerators,
-  generateBatch,
-  generateBatchWithProgress,
-};
+export = genata;
