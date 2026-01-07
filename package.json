@@ -1,0 +1,42 @@
+{
+  "name": "genata",
+  "version": "1.0.0",
+  "description": "Generate realistic fake data with ease - Email, names, dates, IDs, and more",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "module": "dist/index.esm.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "jest",
+    "lint": "eslint src --ext .ts",
+    "prepublish": "npm run build"
+  },
+  "keywords": [
+    "fake-data",
+    "faker",
+    "mock-data",
+    "testing",
+    "data-generator"
+  ],
+  "author": "Genata",
+  "license": "MIT",
+  "dependencies": {
+    "@faker-js/faker": "^10.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "typescript": "^5",
+    "eslint": "^8",
+    "@typescript-eslint/eslint-plugin": "^6",
+    "@typescript-eslint/parser": "^6",
+    "jest": "^29",
+    "@types/jest": "^29"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
