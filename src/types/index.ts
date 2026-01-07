@@ -30,8 +30,11 @@ export type FieldType =
   | "ipv4"
   | "ipv6"
   | "color"
+  | "hex"
   | "paragraph"
-  | "sentence";
+  | "sentence"
+  | "word"
+  | "slug";
 
 export interface GeneratorOptions {
   seed?: number;

@@ -68,8 +68,11 @@ export function isValidFieldType(type: unknown): type is FieldType {
     "ipv4",
     "ipv6",
     "color",
+    "hex",
     "paragraph",
     "sentence",
+    "word",
+    "slug",
   ];
 
   return typeof type === "string" && validTypes.includes(type as FieldType);

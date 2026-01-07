@@ -92,8 +92,14 @@ export function generateField(
       return TextGenerators.paragraph(options);
     case "sentence":
       return TextGenerators.sentence(options);
+    case "word":
+      return TextGenerators.word(options);
+    case "slug":
+      return TextGenerators.slug(options);
     case "color":
       return DataTypeGenerators.color(options);
+    case "hex":
+      return DataTypeGenerators.hex(options);
 
     default:
       throw new Error(`Unknown field type: ${type}`);
