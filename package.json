@@ -1,7 +1,7 @@
 {
-  "name": "genata",
+  "name": "@drichdev/genata",
   "version": "1.0.0",
-  "description": "Generate realistic fake data with ease - Email, names, dates, IDs, and more",
+  "description": "Generate realistic fake data easily",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "module": "dist/index.esm.js",

@@ -301,4 +301,4 @@ For very large batches (>100K records), consider:
 
 ---
 
-Made with ❤️ by Genata Team
+Made with ❤️ by Drichdev
