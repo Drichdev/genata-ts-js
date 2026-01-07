@@ -1,6 +1,6 @@
 {
   "name": "@drichdev/genata",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Generate realistic fake data easily",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
