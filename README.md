@@ -2,17 +2,30 @@
 
 A lightweight, secure, and TypeScript-first library for generating realistic fake data for testing, development, and documentation.
 
-## 🚀 Features
+---
 
-- **Simple API**: `genata.email()`, `genata.firstName()`, etc.
-- **Batch Generation**: Generate multiple records at once
-- **Seeding Support**: Reproducible data with seed values
-- **Type-Safe**: Full TypeScript support with strict typing
-- **Secure**: Input validation and sanitization built-in
-- **No Dependencies**: Only depends on @faker-js/faker
-- **25+ Data Types**: From emails to credit cards
+## Features
 
-## 📦 Installation
+* Simple and intuitive API
+* Batch data generation
+* Reproducible data with seed support
+* Full TypeScript support
+* Built-in validation and sanitization
+* No runtime dependencies except `@faker-js/faker`
+* 25+ data generators
+
+---
+
+## Why Genata?
+
+* Cleaner and simpler API than typical faker usage
+* Built-in batch generation without extra tooling
+* Consistent seeding across all generators
+* Type-safe by default
+
+---
+
+## Installation
 
 ```bash
 npm install @drichdev/genata
@@ -22,52 +35,57 @@ yarn add @drichdev/genata
 pnpm add @drichdev/genata
 ```
 
-## 🎯 Quick Start
+---
 
-### CommonJS (Node.js)
+## Import
+
+### ES Modules (recommended)
+
+```javascript
+import genata from '@drichdev/genata';
+```
+
+### CommonJS
 
 ```javascript
 const genata = require('@drichdev/genata');
-
-const email = genata.email();
-const firstName = genata.firstName();
-const phone = genata.phone();
 ```
 
-### ES Modules (Node.js with "type": "module")
-
-```javascript
-import genata from '@drichdev/genata';
-
-const email = genata.email();
-const firstName = genata.firstName();
-const phone = genata.phone();
-```
-
-### TypeScript / Next.js
+### TypeScript
 
 ```typescript
-import genata from '@drichdev/genata';
-
-export default function Home() {
-  const email = genata.email();
-  const firstName = genata.firstName();
-  const phone = genata.phone();
-
-  return (
-    <div>
-      <p>Email: {email}</p>
-      <p>Name: {firstName}</p>
-      <p>Phone: {phone}</p>
-    </div>
-  );
-}
+import genata, { type FieldDefinition } from '@drichdev/genata';
 ```
 
-### Using Generators by Category
+---
+
+## Quick Start
 
 ```javascript
-// Person generators
+import genata from '@drichdev/genata';
+
+const email = genata.email();
+const firstName = genata.firstName();
+const phone = genata.phone();
+```
+
+---
+
+## Naming Convention
+
+* Direct API uses camelCase
+  `genata.firstName()`
+
+* Batch generation uses snake_case
+  `type: "first_name"`
+
+---
+
+## Generators
+
+### Person
+
+```javascript
 genata.person.firstName();
 genata.person.lastName();
 genata.person.fullName();
@@ -75,46 +93,64 @@ genata.person.email();
 genata.person.username();
 genata.person.password();
 genata.person.phone();
+```
 
-// Location generators
+### Location
+
+```javascript
 genata.location.address();
 genata.location.city();
 genata.location.country();
 genata.location.zipCode();
+```
 
-// Internet generators
+### Internet
+
+```javascript
 genata.internet.url();
 genata.internet.ipv4();
 genata.internet.ipv6();
 genata.internet.creditCard();
+```
 
-// Company generators
+### Company
+
+```javascript
 genata.company.company();
 genata.company.jobTitle();
+```
 
-// Date generators
+### Date
+
+```javascript
 genata.date.date();
 genata.date.dateTime();
 genata.date.futureDate();
+```
 
-// Data type generators
+### Data Types
+
+```javascript
 genata.datatype.uuid();
 genata.datatype.boolean();
 genata.datatype.integer({ min: 0, max: 100 });
 genata.datatype.float({ min: 0, max: 100, decimals: 2 });
 genata.datatype.color();
 genata.datatype.hex({ length: 16 });
+```
 
-// Text generators
+### Text
+
+```javascript
 genata.text.sentence();
 genata.text.paragraph({ sentences: 5 });
 genata.text.word();
 genata.text.slug();
 ```
 
-### Batch Generation
+---
 
-Generate multiple records at once:
+## Batch Generation
 
 ```javascript
 const fields = [
@@ -126,44 +162,22 @@ const fields = [
   { name: "createdAt", type: "datetime" },
 ];
 
-// Generate 100 records (default)
+// Default (100 records)
 const users = genata.generateBatch(fields);
 
-// Generate 1000 records
+// Custom count
 const largeDataset = genata.generateBatch(fields, { count: 1000 });
 
-// With progress tracking
+// With progress
 const data = genata.generateBatchWithProgress(fields, {
   count: 10000,
   onProgress: (progress) => console.log(`${progress}% complete`),
 });
 ```
 
-### Seeding for Reproducible Data
+---
 
-```javascript
-// Set a seed for reproducible results
-genata.setSeed(12345);
-
-const email1 = genata.email(); // Always the same value
-const email2 = genata.email(); // Always the same value
-
-// Reset to random generation
-genata.resetSeed();
-```
-
-## 🔒 Security Features
-
-- **Input Validation**: All options are validated before use
-- **Sanitization**: User inputs are sanitized to prevent injection
-- **Type Safety**: TypeScript strict mode ensures type correctness
-- **Error Handling**: Proper error messages for invalid inputs
-- **No Shell Execution**: No dynamic code execution
-- **Immutable Defaults**: Safe default values that can't be modified
-
-## 📋 Available Field Types
-
-When using batch generation, supported field types are:
+## Supported Field Types
 
 ```
 Person: first_name, last_name, full_name, email, username, password, phone
@@ -175,191 +189,185 @@ Data Types: uuid, boolean, int, float, number, zero_one, id_increment, color, he
 Text: sentence, paragraph, word, slug
 ```
 
-## 🎛️ API Reference
+---
 
-### Core Methods
+## Seeding (Reproducible Data)
 
-#### `genata.email()`
+```javascript
+genata.setSeed(12345);
 
-Generate a random email address.
+const email1 = genata.email();
+const email2 = genata.email();
+
+// Reset randomness
+genata.resetSeed();
+```
+
+---
+
+## API Reference
+
+### `genata.email()`
+
+Generate a random email.
 
 ```javascript
 const email = genata.email();
-// "alice.johnson@example.com"
 ```
 
-#### `genata.generateBatch(fields, options?)`
+---
+
+### `genata.generateBatch(fields, options?)`
 
 Generate multiple records.
 
 **Parameters:**
 
-- `fields` (FieldDefinition[]): Array of field definitions
-- `options` (BatchGeneratorOptions?):
-  - `count` (number): Number of records to generate (default: 100)
-  - `seed` (number): Seed for reproducible data
-  - `locale` (string): Locale for faker
+* `fields`: Array of field definitions
+* `options`:
 
-**Returns:** Array of objects with generated data
+  * `count` (default: 100)
+  * `seed`
+  * `locale`
 
-#### `genata.setSeed(seed)`
+**Returns:** Array of objects
 
-Set a seed for reproducible data generation.
+---
 
-**Parameters:**
+### `genata.setSeed(seed)`
 
-- `seed` (number): Non-negative integer seed value
+Set a seed for reproducible results.
 
-#### `genata.resetSeed()`
+---
 
-Reset to random generation without a seed.
+### `genata.resetSeed()`
 
-## 🏗️ Architecture
+Reset random generation.
 
-The library is organized into modules:
+---
 
-- **generators**: Data generation logic (basic, batch, field-level)
-- **types**: TypeScript type definitions
-- **validators**: Input validation and sanitization
-- **utils**: Helper functions (faker initialization)
+## Examples
 
-## 🧪 Testing
+### Generate Users
+
+```javascript
+const users = genata.generateBatch(
+  [
+    { name: "id", type: "id_increment" },
+    { name: "email", type: "email" },
+    { name: "firstName", type: "first_name" },
+    { name: "lastName", type: "last_name" },
+    { name: "phone", type: "phone" },
+    { name: "company", type: "company" },
+    { name: "jobTitle", type: "job_title" },
+    { name: "createdAt", type: "datetime" },
+  ],
+  { count: 50 }
+);
+```
+
+---
+
+### Generate Products
+
+```javascript
+const products = genata.generateBatch(
+  [
+    { name: "id", type: "uuid" },
+    { name: "name", type: "sentence" },
+    { name: "description", type: "paragraph", options: { sentences: 3 } },
+    { name: "price", type: "float", options: { min: 10, max: 1000, decimals: 2 } },
+    { name: "stock", type: "int", options: { min: 0, max: 1000 } },
+    { name: "color", type: "color" },
+  ],
+  { count: 20 }
+);
+```
+
+---
+
+### Reproducible Tests
+
+```javascript
+beforeEach(() => {
+  genata.setSeed(42);
+});
+
+const user1 = { email: genata.email() };
+
+genata.setSeed(42);
+const user2 = { email: genata.email() };
+```
+
+---
+
+## Security
+
+* Input validation on all public methods
+* Sanitization of user-provided options
+* No dynamic code execution
+* Safe default values
+
+---
+
+## Architecture
+
+* `generators`: data generation logic
+* `types`: TypeScript definitions
+* `validators`: input validation
+* `utils`: internal helpers
+
+---
+
+## Testing
 
 ```bash
 npm test
 ```
 
-## 📄 License
+---
 
-MIT
+## Troubleshooting
 
-## 🤝 Contributing
+### Invalid field type
 
-Contributions are welcome! Please ensure:
+Ensure the field type exists in the supported list.
 
-- All code is TypeScript
-- Security-first approach
-- Input validation for all public methods
-- Comprehensive error messages
+### Seed not working
 
-## 📚 Examples
+Set the seed before generating data and avoid mixing seeded and non-seeded calls.
 
-### Generate Test Users
+### Performance issues
 
-```javascript
-import genata from "genata";
+For very large datasets:
 
-const generateTestUsers = (count = 10) => {
-  return genata.generateBatch(
-    [
-      { name: "id", type: "id_increment" },
-      { name: "email", type: "email" },
-      { name: "firstName", type: "first_name" },
-      { name: "lastName", type: "last_name" },
-      { name: "phone", type: "phone" },
-      { name: "company", type: "company" },
-      { name: "jobTitle", type: "job_title" },
-      { name: "createdAt", type: "datetime" },
-    ],
-    { count }
-  );
-};
-
-const users = generateTestUsers(50);
-console.log(users);
-```
-
-### Generate E-commerce Products
-
-```javascript
-const generateProducts = (count = 20) => {
-  return genata.generateBatch(
-    [
-      { name: "id", type: "uuid" },
-      { name: "name", type: "sentence" },
-      { name: "description", type: "paragraph", options: { sentences: 3 } },
-      { name: "price", type: "float", options: { min: 10, max: 1000, decimals: 2 } },
-      { name: "stock", type: "int", options: { min: 0, max: 1000 } },
-      { name: "color", type: "color" },
-    ],
-    { count }
-  );
-};
-```
-
-### Reproducible Data for Tests
-
-```javascript
-describe("User Service", () => {
-  beforeEach(() => {
-    genata.setSeed(42);
-  });
-
-  test("should process user data consistently", () => {
-    const user1 = { email: genata.email() };
-    
-    genata.setSeed(42);
-    const user2 = { email: genata.email() };
-
-    expect(user1.email).toBe(user2.email);
-  });
-});
-```
-
-## 🐛 Troubleshooting
-
-### "Invalid field type" error
-
-Make sure you're using a valid field type from the supported list.
-
-### Data is not reproducible with seed
-
-Make sure to set the seed before generating data and don't mix generator calls without resetting.
-
-### Performance issues with large batches
-
-For very large batches (>100K records), consider:
-
-- Generating in chunks
-- Using `generateBatchWithProgress` to show progress
-- Running in a worker thread if in browser
-
-## 📚 Complete Documentation
-
-For detailed examples and advanced usage, see [USAGE.md](./USAGE.md)
-
-## 🔧 Import Methods
-
-### CommonJS
-```javascript
-const genata = require('@drichdev/genata');
-genata.email();
-```
-
-### ES Modules
-```javascript
-import genata from '@drichdev/genata';
-genata.email();
-```
-
-### TypeScript
-```typescript
-import genata, { type FieldDefinition } from '@drichdev/genata';
-```
-
-### Next.js / React
-```typescript
-import genata from '@drichdev/genata';
-
-export default function Component() {
-  const data = genata.email();
-  return <div>{data}</div>;
-}
-```
-
-**⚠️ Note**: If you get a "Module type is not specified" warning, add `"type": "module"` to your `package.json` or use CommonJS require instead.
+* Generate in chunks
+* Use progress tracking
+* Consider worker threads in browser environments
 
 ---
 
-Made with ❤️ by Drichdev
+## Contributing
 
+* TypeScript only
+* Validate all inputs
+* Maintain strong error handling
+* Follow a security-first approach
+
+---
+
+## License
+
+MIT
+
+---
+
+## Documentation
+
+See [USAGE.md](./USAGE.md) for advanced usage.
+
+---
+
+## Author
+
+Created by Drichdev
