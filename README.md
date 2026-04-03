@@ -354,11 +354,6 @@ For very large datasets:
 * Maintain strong error handling
 * Follow a security-first approach
 
----
-
-## License
-
-MIT
 
 ---
 
