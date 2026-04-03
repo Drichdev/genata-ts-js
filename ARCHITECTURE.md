@@ -49,34 +49,6 @@
                   └──────────────────────────┘
 ```
 
-## 🗂️ Directory Structure
-
-```
-genata-core-react/
-├── src/
-│   ├── index.ts                 # Main API entry point
-│   ├── examples.ts              # Comprehensive examples
-│   ├── types/
-│   │   └── index.ts             # TypeScript type definitions
-│   ├── generators/
-│   │   ├── index.ts             # Generators exports
-│   │   ├── base.ts              # All generator functions
-│   │   ├── batch.ts             # Batch generation logic
-│   │   └── field.ts             # Field-level generation
-│   ├── validators/
-│   │   └── index.ts             # Input validation & sanitization
-│   └── utils/
-│       └── faker.ts             # Faker wrapper & seeding
-├── package.json                 # Project dependencies
-├── tsconfig.json               # TypeScript configuration
-├── eslint.config.mjs           # ESLint configuration
-├── README.md                    # Main documentation
-├── SECURITY.md                  # Security guidelines
-├── CONTRIBUTING.md             # Contribution guidelines
-├── CHANGELOG.md                # Version history
-├── LICENSE                      # MIT License
-└── .gitignore                   # Git ignore rules
-```
 
 ## 🔄 Data Flow
 
